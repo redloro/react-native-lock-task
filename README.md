@@ -21,7 +21,7 @@ Make the following changes to your main `AndroidManifest.xml`
           android:name="com.darkpos.locktask.LockTaskReceiver"
           android:exported="true"
           android:label="LockTask"
-          android:description="Allow LockTask to lock the screen and run in an immersive mode"
+          android:description="@string/locktask_receiver_description"
           android:permission="android.permission.BIND_DEVICE_ADMIN" >
           <meta-data
               android:name="android.app.device_admin"
