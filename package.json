@@ -1,0 +1,27 @@
+{
+  "author": {
+    "name": "redloro"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "lock task mode for android",
+  "devDependencies": {},
+  "homepage": "https://github.com/redloro/react-native-lock-task",
+  "keywords": [
+    "react-native",
+    "locktask",
+    "rn",
+    "android"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "react-native-lock-task",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/redloro/react-native-lock-task"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.1.0"
+}
