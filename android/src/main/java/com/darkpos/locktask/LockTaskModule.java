@@ -1,5 +1,8 @@
 package com.darkpos.locktask;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 import android.app.Activity;
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
@@ -21,6 +24,7 @@ import com.facebook.react.bridge.UiThreadUtil;
 
 public class LockTaskModule extends ReactContextBaseJavaModule {
     private static final String TAG = "LockTaskModule";
+    private static final String CLASSNAME = "com.darkpos.locktask.LockTaskReceiver";
     private final ReactApplicationContext reactContext;
 
     public LockTaskModule(@NonNull ReactApplicationContext reactContext) {
@@ -35,7 +39,38 @@ public class LockTaskModule extends ReactContextBaseJavaModule {
     }
 
     private ComponentName getAdminComponent() {
-        return new ComponentName(reactContext, "com.darkpos.locktask.LockTaskReceiver");
+        return new ComponentName(reactContext, CLASSNAME);
+    }
+
+    /* Device Owner */
+
+    @ReactMethod
+    public void setDeviceOwner() {
+        try {
+            String deviceAdminReceiverName = reactContext.getPackageName() + "/" + CLASSNAME;
+
+            Log.d(TAG, "setDeviceOwner request: " + deviceAdminReceiverName);
+            Process proc = Runtime.getRuntime().exec("dpm set-device-owner " + deviceAdminReceiverName);
+            BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+            BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
+
+            // Read the output from the command
+            Log.d(TAG, "setDeviceOwner output:");
+            String s = null;
+            while ((s = stdInput.readLine()) != null) {
+                Log.d(TAG, s);
+            }
+
+            // Read any errors from the attempted command
+            Log.d(TAG, "setDeviceOwner error:");
+            while ((s = stdError.readLine()) != null) {
+                Log.d(TAG, s);
+            }
+
+            Log.d(TAG, "setDeviceOwner done");
+        } catch (Exception e) {
+            Log.e(TAG, "setDeviceOwner failed with exception: ", e);
+        }
     }
 
     /* Device Admin */

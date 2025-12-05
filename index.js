@@ -5,6 +5,7 @@ export default {
   isDeviceAdminEnabled: () => LockTask.isDeviceAdminEnabled(),
   requestDeviceAdmin: () => LockTask.requestDeviceAdmin(),
   removeDeviceAdmin: () => LockTask.removeDeviceAdmin(),
+  setDeviceOwner: () => LockTask.setDeviceOwner(),
   setLockTaskPackages: () => LockTask.setLockTaskPackages(),
   startLockTask: () => LockTask.startLockTask(),
   stopLockTask: () => LockTask.stopLockTask(),

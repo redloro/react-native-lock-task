@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="locktask_receiver_description">Allow LockTask to lock the screen and run in an immersive mode</string>
+    <string name="locktask_receiver_description">Lock the screen and run in immersive mode</string>
 </resources>
